@@ -1,0 +1,88 @@
+<html>
+	
+	<head>
+		<title>Calculator</title>
+
+		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+
+				$("#Add").click(function() {
+					var v1 = $("#value1").val();
+					var v2 = $("#value2").val();
+					var add = parseInt(v1) + parseInt(v2);
+
+					$("#result").val(add);
+					return false;
+				});
+
+				$("#Sub").click(function() {
+					var v1 = $("#value1").val();
+					var v2 = $("#value2").val();
+					var add = parseInt(v1) - parseInt(v2);
+
+					$("#result").val(add);
+					return false;
+				});
+
+				$("#Mul").click(function() {
+					var v1 = $("#value1").val();
+					var v2 = $("#value2").val();
+					var add = parseInt(v1) * parseInt(v2);
+
+					$("#result").val(add);
+					return false;
+				});
+
+				$("#Div").click(function() {
+					var v1 = $("#value1").val();
+					var v2 = $("#value2").val();
+					var add = parseInt(v1) / parseInt(v2);
+
+					$("#result").val(add);
+					return false;
+				});
+
+				$("#clear").click(function() {
+					$("#value1").val(null);
+					$("#value2").val(null);
+					$("#result").val(null);
+
+					return false;
+				});
+			});
+		</script>
+
+	</head>
+	<body>
+
+			<form>
+				<p>
+					Value:
+					<input type="text" id="value1">
+				</p>
+				<p>
+					Value:
+					<input type="text" id="value2">
+				</p>
+				
+
+			</form>
+
+			<a href="" id="Add">Addition</a>
+			<a href="" id="Sub">Subtract</a>
+			<a href="" id="Mul">Multiply</a>
+			<a href="" id="Div">Division</a>
+
+			<p>Result:
+				<input type="text" id="result">
+			</p>
+			<p>
+				<a href="" id="clear">Clear All</a>
+			</p>
+
+	</body>
+
+</html>

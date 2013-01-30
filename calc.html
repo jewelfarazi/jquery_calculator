@@ -1,0 +1,214 @@
+<html>
+	<head>
+		<title>Calculator</title>
+		<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function() {
+
+				var val = $("#calcBox");
+				var addition = false;
+				var subtract = false;
+				var multiply = false;
+				var division = false;
+				var v1 = "";
+				var v2 = "";
+				var v3 = "";
+
+				function numValue(val, newVal) {
+					
+					if(val.val() == "0") {
+						
+						return (newVal == ".") ? val.val("0"+newVal) : val.val(newVal);
+						
+					} else if(val.val()) {
+
+						var v = val.val();
+						return (val.val() == "0.") ? val.val("0."+newVal) : val.val(v+newVal);	
+						
+					} else {
+						return val.val(newVal);
+					}
+				}
+
+				function resultCalc(calv1, calv2) {
+					v1 = val.val();
+					val.val(0);
+					v3 = calv1;
+					$("#theValues").html(v1+calv2);
+					return v1, v3;
+				}
+
+				
+				$("#clearLast").click(function() {
+					
+					if(!val.val()) {
+						val.val(0);
+					} else if(val.val() != 0) {
+						var clr = val.val().substr(0, val.val().length-1);		
+							val.val(clr);
+						
+					}
+					
+				});
+
+				$("#clearAll").click(function() {
+					val.val(0);
+					$("#theValues").empty();
+				});
+
+				$("#addition").click(function() {
+					resultCalc("addition", " + ");					
+				});
+
+				$("#subtract").click(function() {
+					resultCalc("subtract", " - ");
+				});
+
+				$("#multiply").click(function() {
+					resultCalc("multiply", " * ");
+				});
+
+				$("#division").click(function() {
+					resultCalc("division", " / ");
+				});
+
+				
+
+				$("#equal").click(function() {
+					v2 = val.val();
+					
+					switch(v3) {
+						case "addition":
+							var add = parseFloat(v1) + parseFloat(v2);
+							val.val(add);
+							$("#theValues").html(v1+" + "+v2);
+							break;
+						case "subtract":
+							var sub = parseFloat(v1) - parseFloat(v2);
+							val.val(sub);
+							$("#theValues").html(v1+" - "+v2);
+							break;
+						case "multiply":
+							var mul = parseFloat(v1) * parseFloat(v2);
+							val.val(mul);
+							$("#theValues").html(v1+" * "+v2);
+							break;
+						case "division":
+							var div = parseFloat(v1) / parseFloat(v2);
+							val.val(div);
+							$("#theValues").html(v1+" / "+v2);
+							break;
+						default:
+							alert("Nothing to calculate!");
+							break;
+					}	
+				});
+
+				$("#one").click(function() {
+					numValue(val, 1);
+				});
+
+				$("#two").click(function() {
+					numValue(val, 2);
+				});
+				
+				$("#three").click(function() {
+					numValue(val, 3);
+				});
+				$("#four").click(function() {
+					numValue(val, 4);
+				});
+				$("#five").click(function() {
+					numValue(val, 5);
+				});
+				$("#six").click(function() {
+					numValue(val, 6);
+				});
+				$("#seven").click(function() {
+					numValue(val, 7);
+				});
+				$("#eight").click(function() {
+					numValue(val, 8);
+				});
+				$("#nine").click(function() {
+					numValue(val, 9);
+				});
+				$("#zero").click(function() {
+					numValue(val, 0);
+				});
+				$("#dot").click(function() {
+					if(val.val().match(/[.]/)) {
+						numValue(val, "");
+					} else {
+						numValue(val, ".");
+					}			
+				});
+
+				
+			});
+
+		</script>
+		<style type="text/css">
+
+			#calc {
+				margin: 70px auto 0 auto;
+				width: 180px;
+				border: 1px solid black;
+				padding: 20px;
+			}
+
+			#calcBox { text-align: right; width: 160px; }
+			#theValues { text-align: right; font-size: 10px; width: 160px; }
+			
+			input { margin: 5px; }
+			input[type="button"] {
+
+				width: 30px; height: 30px;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div id="calc">
+			<div id="theValues"></div>
+			<input type="text" value="0" id="calcBox">
+			<div class="row1">
+				<input type="button" value="<--" id="clearLast">
+				<input type="button" value="c" id="clearAll">
+				
+			</div>
+
+			<div class="row2">
+				<input type="button" value="7" id="seven">
+				<input type="button" value="8" id="eight">
+				<input type="button" value="9" id="nine">
+				<input type="button" value="/" id="division">
+			</div>
+
+			<div class="row3">
+				<input type="button" value="4" id="four">
+				<input type="button" value="5" id="five">
+				<input type="button" value="6" id="six">
+				<input type="button" value="*" id="multiply">
+			</div>
+
+			<div class="row4">
+				<input type="button" value="1" id="one">
+				<input type="button" value="2" id="two">
+				<input type="button" value="3" id="three">
+				<input type="button" value="-" id="subtract">
+			</div>
+
+			<div class="row5">
+				<input type="button" value="0" id="zero">
+				<input type="button" value="." id="dot">
+				<input type="button" value="=" id="equal">
+				<input type="button" value="+" id="addition">
+			</div>
+
+		</div>
+
+	</body>
+</html>
